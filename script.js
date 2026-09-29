@@ -1,0 +1,4 @@
+const menu=document.querySelector('.menu'),links=document.querySelector('.links');menu.onclick=()=>links.classList.toggle('open');document.querySelectorAll('.links a').forEach(a=>a.onclick=()=>links.classList.remove('open'));
+const observer=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('show')}),{threshold:.12});document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+const sections=[...document.querySelectorAll('section')],nav=[...document.querySelectorAll('.links a')];addEventListener('scroll',()=>{let id='home';sections.forEach(s=>{if(scrollY>=s.offsetTop-180)id=s.id});nav.forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+id))});
+document.querySelector('#contactForm').addEventListener('submit',e=>{e.preventDefault();document.querySelector('#formMsg').textContent='Message form is ready. Connect it to your email/backend to receive submissions.'});
